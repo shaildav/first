@@ -1,0 +1,220 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false">
+<apex:form >
+
+<html>
+<head>
+<title>HP Employee Purchase Plan</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<meta name="generator" content="HAPedit 3.1"/>
+<link rel="stylesheet" href="css/hpEpp.css"/>
+</head>
+<style>
+@charset "utf-8";
+/* HP EPP */
+
+html,body{
+    margin:10px 0px 0px 0px;
+    padding:0; 
+    font-family:arial; 
+    font-size:11px; 
+    background:#000000; 
+    color:#CCCCCC;
+}
+img {border:none}
+a{color:#8dc641; text-decoration:underline;}
+a:hover{text-decoration:none;}
+h1{color:#8dc641; margin:0px;}
+
+/*MAIN CONTAINERS*/
+#container{
+    width:960px;
+    margin:0 auto;
+    text-align:left;
+}
+#threeColWrapper{
+    float:left;
+    width:100%;
+}
+#twoColWrapper{
+    float:left;
+    width:100%;
+}
+
+/*HEADER*/
+#header{
+    height:85px;
+    line-height:85px;
+    margin:0;
+    padding-left:10px;
+    background:url({!$resource.images}) repeat-x top;
+}
+#header #logo{
+    float:left;
+    width:215px;
+    height:67px;
+    padding:10px 0px 0px 0px;
+}
+#header #btnHome{
+    float:right;
+    width:88px;
+    height:31px;
+    padding:35px 0px 0px 0px;
+}
+
+/*PANELS*/
+#mainFeaturedContent{
+    float:left;
+    width:715px;
+    height:285px;
+    margin:10px 0px 10px 0px;
+}
+#utilityContent{
+    float:right;
+    width:235px;
+    height:280px;
+    background:url({!$resource.images}) no-repeat top;
+    margin:10px 0px 10px 0px;
+    
+}
+#utilityContent .block{
+    padding:35px;
+}
+#featuredContent{
+    width:470px;
+    height:175px;
+    /*background:#666666;*/
+    margin:0px 0px 10px 0px;
+}
+#newsContent{
+    float:left;
+    width:235px;
+    min-height:175px;
+    margin:0px 0px 10px -480px;
+    background:#8dc641 url({!$resource.images}) repeat-x bottom;
+}
+#newsContent .block{
+    color:#000000;
+    padding:5px 10px 10px 10px;
+}
+#newsContent p{
+    margin:0px 0px 10px 0px;
+}
+#newsContent a{
+    color:#000000;
+}
+#newsContent h2{
+    font-size:16px;
+    font-weight:bold;
+    margin:0;
+}
+#resouceContent{
+    float:left;
+    width:235px;
+    height:175px;
+    margin:0px 0px 10px -235px;
+}
+#resouceContent .block{
+    color:#000000;
+    padding:5px 10px 10px 10px; 
+}
+#resourceContent h2{
+    font-size:16px;
+    font-weight:bold;
+    margin:0;
+}
+#resouceContent #resource1 {
+    float:left;
+    width:100px;
+    border-right:1px solid #333333;
+    padding:0px 5px 0px 0px;
+}
+#resouceContent #resource2 {
+    float:right; 
+    width:100px; 
+    padding:0px 0px 0px 5px;
+}
+#resouceContent p{
+    margin:0px 0px 3px 0px;
+}
+#resouceContent h2{
+    font-size:16px;
+    font-weight:bold;
+    margin:0;
+}
+#resouceContent a{
+    color:#000000;
+}
+
+
+/*FOOTER*/
+#footer{
+    clear:left;
+    width:100%;
+    height:25px;
+    line-height:25px;
+    font-size:10px;
+    background:url({!$resource.images}) repeat-x top;
+    color: #666666;
+}
+#footer #disclaimer{
+    float:left;
+    width:260px;
+    padding:0px 0px 0px 10px;
+}
+#footer #footerLinks{
+    float:right;
+    text-align:right;
+    width:680px;
+    padding:0px 10px 0px 0px;
+}
+#footer #footerLinks a{
+    text-decoration:none;
+    color:#666666;
+}
+
+
+
+
+</style>
+<body>
+<div id="container">
+    <div id="header">
+        <div id="logo">
+            
+<apex:image value="{!$Resource.images}" width="215" height="67" alt="Test"/>
+        </div>
+        <div id="btnHome">
+            <apex:outputlink value="http://hpdirect.hhosandbox.cs2.force.com/internalwelcomepage">
+<apex:image value="{!$Resource.images}" width="88" height="31" alt="home"/></apex:outputlink>
+        </div>
+    </div>
+    <div id="twoColWrapper">
+        <div id="mainFeaturedContent">
+                <apex:outputlink value="http://hpdirect.hhosandbox.cs2.force.com/EPPInternalProgramInfo">
+<apex:image value="{!$Resource.images}" width="715" height="485" alt="Main Featured"/></apex:outputlink>
+        </div>
+        <div id="utilityContent">
+            <div class="block">
+                  <apex:outputlink value="http://hpdirect.hhosandbox.cs2.force.com/eppnomint">
+                   <apex:image value="{!$Resource.images}" width="161" height="28" alt="Nominate An Account"/></apex:outputlink>
+                Take a second to nominate an account and we will set them up with a custom landing page and exclusive savings.
+            </div>
+        </div>
+    </div>    
+    
+    <div id="footer">
+        <div id="disclaimer">
+            &copy; Shailforce Development Company.
+        </div>
+        <div id="footerLinks">       
+                <apex:outputlink value="mailto:shailforce@gmail.com">Feedback</apex:outputlink>&nbsp;&nbsp;|&nbsp;
+            <apex:outputlink value="mailto:shailforce@gmail.com">Support</apex:outputlink>
+        </div>
+    </div>
+</div>
+<site:googleAnalyticsTracking />
+</body>
+</html>
+
+</apex:form>
+</apex:page>

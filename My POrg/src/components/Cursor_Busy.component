@@ -1,0 +1,10 @@
+<apex:component >
+    <div id="dlgCont" name="dlgCont" style="overflow: visible; position: absolute; z-index: 998; visibility: visible; display: none; left: 482.5px; top: 270px; width: 400px; filter:alpha(opacity=99); -moz-opacity:0.99; opacity: 0.99;">
+          <div id="dlgSubCont" name="dlgSubCont" style="position: relative; z-index: 2; text-align: center;">
+               <span id="waitMsg" style="font-family: verdana, arial, sans-serif; font-weight: bold; font-size: medium;">...Please Wait</span><br /><br />
+               <img src="/img/waiting_dots.gif" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>
+          </div>
+    </div>
+    <iframe frameborder="0" id="backFr" name="backFr" height="450px" width="450px" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" style="position: absolute; left: 0; top: 0; z-index: 996; display: none; filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0);" src="javascript: true;"></iframe>
+    <div id="divUnder" name="divUnder" style="position: absolute; top: 0px; left: 0px; z-index: 997; display: none; background-color: #000000; filter:alpha(opacity=50); -moz-opacity:0.5; opacity: 0.5; width: 1161px; height: 600px;"></div>   
+</apex:component>

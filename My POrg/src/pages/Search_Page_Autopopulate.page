@@ -1,0 +1,7 @@
+<apex:page >
+    <apex:form ><br/>   
+        <apex:inputText id="account">
+            <c:AutoPopulate objectname="Account" autocomplete_textbox="Name"/>
+        </apex:inputText>
+    </apex:form>
+</apex:page>

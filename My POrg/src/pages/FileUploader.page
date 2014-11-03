@@ -1,0 +1,25 @@
+<apex:page sidebar="false" controller="FileUploaderNew">
+   <apex:form >
+      <apex:sectionHeader title="Upload data from CSV file"/>
+      <apex:pagemessages />
+      <apex:pageBlock >
+           <center>
+              <apex:inputFile value="{!contentFile}" filename="{!nameFile}" /> 
+              <apex:commandButton action="{!ReadFile}" value="Upload File" id="theButton" style="width:70px;"/>
+           </center>  
+           <p> Please download the User scv file from <a href="https://ap1.salesforce.com/resource/1379407901000/UserDataUpload">Here</a><br/><br/></p>
+      <apex:pageblocktable value="{!uploadedUsers}" var="acc" rendered="{!NOT(ISNULL(uploadedUsers))}">
+          <apex:column headerValue="User First Name">
+              <apex:outputField value="{!acc.FirstName}"/>
+          </apex:column>
+          <apex:column headerValue="User Last Name">
+              <apex:outputField value="{!acc.LastName}"/>
+          </apex:column>
+          <apex:column headerValue="Email">
+              <apex:outputField value="{!acc.Email}"/>
+          </apex:column>
+      </apex:pageblocktable> 
+      
+      </apex:pageBlock>       
+   </apex:form>   
+</apex:page>

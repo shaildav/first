@@ -1,0 +1,40 @@
+<apex:page showHeader="false">
+
+ <apex:messages />
+    <br/><br/><br/>
+ 
+ <script type="text/vbscript">
+
+  Sub readBtn_OnClick
+
+    Dim fileUrl
+    Dim rowIndex
+    Dim colIndex
+    Dim oldContent
+    Dim newContent
+    Dim cellContent
+
+    fileUrl = document.form.userFile.value
+    Set objExcel = CreateObject("Excel.Application")
+    Set objWorkbook = objExcel.Workbooks.Open(fileUrl)
+
+    rowIndex = 1
+    colIndex = 1
+    Do Until objExcel.Cells(rowIndex ,colIndex).Value = ""
+        oldContent = document.form.excelContent.value
+        newContent = oldContent & objExcel.Cells(rowIndex , colIndex).Value & vbCr & vbLf
+        document.form.excelContent.value = newContent 
+        rowIndex = rowIndex + 1
+    Loop
+    objExcel.Workbooks(1).Close
+    objExcel.Quit
+  End Sub
+</script>
+
+<form name="form">
+    <input type="file" name="userFile"/>
+    <input type="button" value="Read" name="readBtn"/>                         
+    <p><textarea rows="10" cols="44" name="excelContent"></textarea></p>
+</form>
+
+</apex:page>

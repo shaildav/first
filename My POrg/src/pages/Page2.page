@@ -1,0 +1,6 @@
+<apex:page standardController="Account" extensions="AccountClassUtility">
+     <apex:form >
+          <apex:actionFunction action="{!sumTheNumber}" name="sumTheNumber"/>
+          Y:<apex:inputText value="{!y}" label="Value Y:" onchange="sumTheNumber"/>
+     </apex:form> 
+</apex:page>

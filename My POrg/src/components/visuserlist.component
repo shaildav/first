@@ -1,0 +1,13 @@
+<apex:component >
+    <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" />
+    <apex:includeScript value="//cdn.goinstant.net/v1/platform.min.js"/>
+    <apex:includeScript value="//cdn.goinstant.net/widgets/webrtc/latest/webrtc.min.js" />
+    <apex:stylesheet value="//cdn.goinstant.net/widgets/webrtc/latest/webrtc.css" />
+    <apex:stylesheet value="{!URLFOR($Resource.visStyles)}"/>
+    
+    <div class="main">
+        <div id="userView" class="webrtc-list">
+        </div>
+    </div>
+ 
+</apex:component>

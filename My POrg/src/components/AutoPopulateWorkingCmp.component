@@ -1,0 +1,115 @@
+<apex:component >
+ <apex:attribute name="ComponentLabel" description="Label of Component"
+                    type="String" required="true"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.AutoCompleteWithModal, '/JQueryUI/css/ui-lightness/jquery-ui-1.8.17.custom.css')}"/>
+<apex:includeScript value="{!URLFOR($Resource.AutoCompleteWithModal, '/JQueryUI/js/jquery-1.7.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.AutoCompleteWithModal, '/JQueryUI/js/jquery-ui-1.8.17.custom.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.AutoCompleteWithModal, '/JQueryModal/css/basic.css')}"/>
+
+<style type="text/css">
+    .ui-autocomplete-loading { background: white url('{!URLFOR($Resource.AutoCompleteWithModal, 'AjaxLoad.gif')}') right center no-repeat; }
+</style>
+
+{!ComponentLabel} <apex:inputText id="theTextInput"/>
+
+<script type="text/javascript">
+//$ac - AutoComplete
+
+$ac = jQuery.noConflict();
+
+function getLoadingImage()
+{
+    var loadImagURL = "{!URLFOR($Resource.AutoCompleteWithModal, 'BigLoad.gif')}";
+    var retStr = ['<img src="', loadImagURL ,'" title="loading..." alt="loading..." class="middleAlign" />'];
+    return retStr.join("");
+}
+
+var sourcePage = 'https://c.ap1.visual.force.com/apex/Account_JSON?core.apexpages.devmode.url=0';
+
+ $ac(function() {
+        var txtVal =  $ac('[id="{!$Component.theTextInput}"]');
+        //This method returns the last character of String
+        function extractLast(term) {
+            return term.substr(term.length - 1);
+        }
+
+        $ac('[id="{!$Component.theTextInput}"]').autocomplete({
+            source: function( request, response ) {
+
+                //Abort Ajax
+                var $this = $ac(this);
+                var $element = $ac(this.element);
+                var jqXHR = $element.data('jqXHR');
+                if(jqXHR)
+                    jqXHR.abort();
+
+                $ac('[id="{!$Component.theTextInput}"]').addClass('ui-autocomplete-loading');
+                //prompt('',sourcePage+'&key='+txtVal.val());
+                $element.data('jqXHR',$ac.ajax({
+                    url: sourcePage+'&userName='+txtVal.val(),
+                    dataType: "json",
+                    data: {
+                    },
+                    success: function( data ) {
+                        response( $ac.map( data , function( item ) {
+                            return {
+                                label: '<a>'+
+                                item.FirstName+"<br />"+
+                                '<span style="font-size:0.8em;font-style:italic">'
+                                +item.FirstName+', '+item.LastName+
+                                "</span></a>",
+                                value: item.LastName
+                            }
+                        }));
+                    },
+                    complete: function() {
+
+                        //This method is called either request completed or not
+                        $this.removeData('jqXHR');
+
+                        //remove the class responsible for loading image
+                        $ac('[id="{!$Component.theTextInput}"]').removeClass('ui-autocomplete-loading');
+                    }
+                })
+                );
+
+            },
+            search: function() {
+                /*
+                // If last character is space
+                    var term = extractLast(this.value);
+                    if(term == " ")
+                    {
+                        return true;
+                    }
+                */
+
+                //If String contains at least 1 space
+                if (this.value.indexOf(" ") >= 0)
+                {
+                    $ac('[id="{!$Component.theTextInput}"]').autocomplete('option', 'delay', 100);
+                    return true;
+                }
+                return false;
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function(event, ui) {
+                var selectedObj = ui.item;
+                //alert(selectedObj.compId);
+                //getCompanyDetail(selectedObj.compId);
+                return true;
+            }
+        }).data("autocomplete")._renderItem = autoCompleteRender;
+
+    });
+
+function autoCompleteRender(ul, item) {
+    return $ac("<li></li>").data("item.autocomplete", item).append(item.label).appendTo(ul);
+}
+
+</script>
+</apex:component>

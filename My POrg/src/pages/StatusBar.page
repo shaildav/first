@@ -1,0 +1,97 @@
+<apex:page standardController="Account" extensions="populateList">
+   
+     <div id="dlgCont" name="dlgCont" style="overflow: visible; position: absolute; z-index: 998; visibility: visible; display: none; left: 482.5px; top: 270px; width: 400px; filter:alpha(opacity=99); -moz-opacity:0.99; opacity: 0.99;">
+          <div id="dlgSubCont" name="dlgSubCont" style="position: relative; z-index: 2; text-align: center;">
+               <span id="waitMsg" style="font-family: verdana, arial, sans-serif; font-weight: bold; font-size: medium;">...Please Wait</span><br /><br />
+               <img src="/img/waiting_dots.gif" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>
+          </div>
+    </div>
+    <iframe frameborder="0" id="backFr" name="backFr" height="100px" width="400px" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" style="position: absolute; left: 0; top: 0; z-index: 996; display: none; filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0);" src="javascript: true;"></iframe>
+    <div id="divUnder" name="divUnder" style="position: absolute; top: 0px; left: 0px; z-index: 997; display: none; background-color: #000000; filter:alpha(opacity=50); -moz-opacity:0.5; opacity: 0.5; width: 1161px; height: 600px;"></div>   
+
+        <script>        
+        
+        function searchFunc(){
+                showDlg('Loading..Please wait.');
+        }
+        function hideDlg() {
+            document.getElementById("dlgCont").style.display  = "none";
+            document.getElementById("backFr").style.display   = "none";  
+            document.getElementById("divUnder").style.display = "none";
+        }
+        function showDlg(msg) {
+          window.scrollTo(0, 0);
+          resizeCustomLoadingDlg();
+          if (msg != null) {
+            document.getElementById("waitMsg").innerHTML = msg;
+          }   
+          if (!isFirefox) { 
+            document.getElementById("backFr").style.display = "";  
+          }
+          document.getElementById("dlgCont").style.display  = "";
+          document.getElementById("divUnder").style.display = ""; 
+        }
+        function resizeCustomLoadingDlg() {
+              var dlgWin = this;
+              var dlgDoc = this.document;
+              var w = 0;
+              var h = 0;
+
+              if (isFirefox) {
+                w = dlgDoc.documentElement.clientWidth;
+                h = dlgWin.innerHeight;
+              } 
+              else {
+                if (!isOpera && dlgWin.innerWidth) {
+                  w = dlgWin.innerWidth;
+                  h = dlgWin.innerHeight;
+                } 
+                else {
+                  if (!isOpera && (dlgDoc.documentElement.clientWidth)) {
+                    var w2 = dlgDoc.documentElement.clientWidth;
+                    if (!w || w2&&w2<w) {
+                          w = w2;
+                    }
+                    h = dlgDoc.documentElement.clientHeight;
+                  } 
+                  else {
+                    if (document.body.clientWidth) {
+                       w = document.body.clientWidth;
+                       h = document.body.clientHeight;
+                    }
+                  }
+               }
+             }
+             var d = document.getElementById("divUnder");
+             d.style.height = h + "px";
+             d.style.width = w + "px";
+    
+             var c = document.getElementById("dlgCont");
+             var offLeft = Math.round((Math.round((w - c.offsetWidth) / 2))*.32);
+             var offRght = Math.round((Math.round((h - c.offsetHeight) / 2))*.35);
+             c.style.left = Math.round((w - c.offsetWidth) / 2)-offLeft + "px";
+             c.style.top = Math.round((h - c.offsetHeight) / 2)-offRght + "px";
+    
+             var f = document.getElementById("backFr");
+             f.style.height = h + "px";
+             f.style.width = w + "px";   
+         }
+
+
+   </script>
+     <apex:outputPanel id="searchPanel">     
+         <apex:form id="mainForm"> 
+            <apex:pageBlock id="pbSearchDiv">
+                 <apex:commandButton value="Click" action="{!populateAccountList}" onclick="searchFunc()" rerender="searchPanel"   oncomplete="hideDlg()"/>
+                 <apex:pageBlockTable id="pbOpenAll" width="100%" value="{!lstAccount}" var="t1" columns="2">
+ 
+                    <apex:column headerValue="Name" value="{!t1.Name}" style="width:5%">
+                    </apex:column>
+        
+                           
+           </apex:pageBlockTable>
+             
+       </apex:pageBlock>
+    </apex:form>  
+    </apex:outputPanel>
+</apex:page>

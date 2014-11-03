@@ -1,0 +1,36 @@
+<apex:page standardController="Opportunity" extensions="DisplayObj"  wizard="true" action="{!updateCounter}">
+   <apex:messages />
+    
+    <apex:form style="width:100%">
+        <apex:pageBlock mode="maindetail">
+          <apex:pageBlockButtons >
+              <apex:commandButton action="{!checkSession}" value="Submit"/>
+          </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!lstO}" var="o" columns="5">
+                    <apex:column headerValue="Case Number">
+                         <apex:outputLabel ><b>Name</b></apex:outputLabel>
+                         <apex:outputField value="{!o.Sales_Rep__c}"/><br/>
+                         <apex:outputLabel ><b>Name</b></apex:outputLabel>
+                         <apex:outputField value="{!o.TestArea__c}"/><br/>
+                         <apex:outputLabel ><b>Name</b></apex:outputLabel>
+                         <apex:outputField value="{!o.Sales_Rep__c}"/><br/>
+                         <apex:outputLabel ><b>Name</b></apex:outputLabel>
+                         <apex:outputField value="{!o.TestArea__c}"/><br/>
+                         <apex:outputLabel ><b>Name</b></apex:outputLabel>
+                         <apex:outputField value="{!o.Sales_Rep__c}"/>
+                        
+                    </apex:column>
+                    <apex:column headerValue="Contact Name">
+                        <apex:outputField value="{!o.Sales_Rep__c}"/><br/>
+                         <apex:outputField value="{!o.TestArea__c}"/><br/>
+                         <apex:inputField value="{!o.Sales_Rep__c}"/><br/>
+                         <apex:inputField value="{!o.TestArea__c}"/><br/>
+                         <apex:inputField value="{!o.Sales_Rep__c}"/>
+      
+                     </apex:column>
+                </apex:pageBlockTable>
+             </apex:pageBlockSection>   
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

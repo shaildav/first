@@ -1,0 +1,5 @@
+<apex:page >
+     <apex:form >
+         <apex:image url="{!URLFOR($Resource.page, 'solitude/html/index.html')}" width="175" height="205"/>
+     </apex:form>
+</apex:page>

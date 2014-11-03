@@ -1,0 +1,16 @@
+<apex:page controller="MyCustomControler" tabStyle="Account">
+<apex:form >
+<apex:pageBlock title="Account detail">
+    Total Records: <apex:inputText value="{!expression}"/>
+    <apex:commandButton value="Submit" action="{!submitQuery}"/> <br/><br/>
+<apex:pageBlockSection title="account information">
+   <apex:pageblockTable value="{!acct}" var="acct">
+     <apex:column value="{!acct.Name}"/>
+     <apex:column value="{!acct.Phone}"/>
+     <apex:column value="{!acct.Industry}"/>
+     <apex:column value="{!acct.Rating}"/>
+   </apex:pageblockTable>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

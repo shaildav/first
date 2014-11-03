@@ -1,0 +1,24 @@
+<apex:page extensions="InlineEditing" sidebar="false" standardcontroller="Account">
+  <apex:form >
+      <apex:pageblock >
+          <apex:pageblockbuttons >                
+                <apex:commandbutton action="{!save}" id="SaveAccid" value="Save" style="display:none">
+                <apex:commandbutton id="cancelAccId" onclick="callonCancelAction()" value="Cancel" style="display:none">
+          </apex:commandbutton></apex:commandbutton></apex:pageblockbuttons>
+          <apex:pageblocksection columns="1">
+              <apex:pageblocktable value="{!ListofAccounts}" var="item">
+                  <apex:column headervalue="Name">
+                      <apex:outputfield value="{!item.Name}">
+                          <apex:inlineeditsupport changedstyleclass="myBoldClass" event="ondblclick" resetfunction="callonCancelAction" showonedit="SaveAccid, cancelAccId">
+                      </apex:inlineeditsupport></apex:outputfield>
+                  </apex:column>
+                  <apex:column headervalue="Industry">
+                      <apex:outputfield value="{!item.Industry}">
+                          <apex:inlineeditsupport changedstyleclass="myBoldClass" event="ondblclick" resetfunction="callonCancelAction" showonedit="SaveAccid, cancelAccId">
+                      </apex:inlineeditsupport></apex:outputfield>
+                  </apex:column>
+              </apex:pageblocktable>
+          </apex:pageblocksection>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

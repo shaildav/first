@@ -1,0 +1,4 @@
+<apex:page standardController="Account">
+
+   <iframe id="companyhelp" src="http://www.starsports.com/cricket/video/index.html?v=1309527" width="100%" height="500"></iframe>
+</apex:page>

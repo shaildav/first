@@ -1,0 +1,118 @@
+<apex:page sidebar="false" standardController="Contact" extensions="ContactClass" cache="true" expires="900" standardStylesheets="false">  
+   <style> 
+       form{margin:0;padding:0;}
+       fieldset{margin:1em 0;border:none;border-top:1px solid #ccc;}
+       legend{margin:0em;padding:1em;color:#036;background:transparent;font-size:1.3em;font-weight:bold;}
+       label{float:right;width:100px;padding:1em;text-align:right;font-weight:bold;}
+       fieldset div{margin-bottom:.5em;padding:0;display:block;}
+       fieldset div input,fieldset div textarea{width:150px;border-top:1px solid #555;border-left:1px solid #555;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:1px;color:#333;}
+       fieldset div select{padding:1px;}div.fm-multi div{margin:5px 0;}div.fm-multi input{width:1em;}div.fm-multi label{display:block;width:200px;padding-left:5em;text-align:right;}
+       #fm-submit{clear:both;padding-top:1em;text-align:right;}
+       #fm-submit input{border:1px solid #333;padding:2px 1em;background:#555;color:#fff;font-size:100%;font-weight:bold;}
+       input:focus,textarea:focus{background:#efefef;color:#000;}fieldset div.fm-req{font-weight:bold;}fieldset div.fm-req label:before{content:"* ";}
+       body{padding:0;margin:20px;color:#333;background:#fff;font:12px arial,verdana,sans-serif;text-align:left;}
+       #container{margin:0 auto;padding:1em;width:350px;text-align:left;}p#fm-intro{margin:0;}
+       .redChar{
+            color: #C30000;
+            font-size: 24px;
+            padding:5px;
+        }
+        .blackChar{
+            color: black;
+            font-weight: bold;
+            font-size: 24px;
+            padding:5px;
+        }
+        .container{
+            background-color: #E8E8E8;
+            border-style: solid;
+            border-width:1px;
+            width: 150px;
+            text-align: center;
+        }
+        .textC{
+            background-image: url(/Images/TextC.png);
+        }
+    </style>
+  <apex:form >
+       <div style="color:red" align="center">
+           <apex:pagemessages />
+       </div>
+    <fieldset>
+        <div class="form">
+        <legend>Contact Information</legend>
+        <table cellpadding="0" cellspacing="0"  align="center"> 
+            <tr>
+                <td aligh="right"><b><apex:outputtext value="Salutation"/></b></td>
+                <td></td>
+                <td aligh="left"><apex:inputfield value="{!con.Salutation}" style="width:80px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="First Name"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.FirstName}" style="width:300px;"/></td>
+            </tr>
+             <tr>
+                <td><b><apex:outputtext value="Last Name"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.LastName}" style="width:300px;"/></td>
+            </tr>
+            <tr> 
+                <td><b><apex:outputtext value="Phone"/></b></td>
+                <td width="5%;"></td>
+                <td><apex:inputfield value="{!con.phone}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Title"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.Title}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Email"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.Email}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Account" /></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.AccountId}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Mailing Street"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.Mailingstreet}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Mailing City"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.MailingCity}" style="width:300px;"/></td>
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Postal Code"/></b></td>
+                <td></td>
+                <td><apex:inputfield value="{!con.Mailingpostalcode}" style="width:300px;"/></td>      
+                
+            </tr>
+            <tr>
+                <td><b><apex:outputtext value="Country"/></b></td>
+                <td></td> 
+                <td><apex:inputfield value="{!con.MailingCountry}" style="width:300px;"/></td>
+            </tr>  
+       </table> 
+        </div>  
+   </fieldset>  
+  <br/>
+  <table cellpadding="0" cellspacing="0"  align="center"> 
+            <tr>
+                <td>
+                    <c:CAPTCHA />
+                 </td>
+            </tr>
+            <tr>
+                <td>                          
+                    <apex:commandButton value="Submit" action="{!doSave}"/>
+                </td>
+            </tr>
+  </table> 
+   </apex:form>          
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page standardController="Account" standardStyleSheets="false" showHeader="false" sidebar="false">    
+    <apex:define name="content">     
+      <!-- wireframe start  -->    
+          <apex:flash src="{!URLFOR($Resource.Html_css_build, 'build/flash/main_v8.swf')}"    
+          flashvars="dancer=CM_Student_Search&vendor=vendor.html&instructor=CM_Instructor_Dept_Class_Search&howitworks=howitworks.html" 
+          play="true" loop="true" height="570" width="980" />   
+     <!-- wireframe end -->    
+    </apex:define>   
+</apex:page>

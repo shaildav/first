@@ -1,0 +1,22 @@
+<apex:page standardController="Summary_Report__c" extensions="SummaryReportCtrl" tabStyle="Report">
+     <apex:form >
+         <apex:pageBlock title="Contents">
+             <apex:pageblockbuttons >                
+                <apex:commandbutton action="{!Save}" id="SaveAccid" value="Save" style="display:none">
+                <apex:commandbutton id="cancelAccId" onclick="callonCancelAction()" value="Cancel" style="display:none">
+             </apex:commandbutton></apex:commandbutton></apex:pageblockbuttons>
+          
+             <apex:pageBlockTable value="{!lstSummaryReport}" var="var">
+                 <apex:column style="width:5%;" headerValue="Serial No." value="{!var.Serial_Number__c}"/>
+                 <apex:column style="width:20%;" headerValue="App Name.">
+                      <apex:commandLink value="{!var.Name}" onclick="window.open('{!var.Link__c}')"/> 
+                 </apex:column>
+                 <apex:column headerValue="Comment">
+                      <apex:outputfield value="{!var.Comment__c}" style="width:600px;">
+                          <apex:inlineeditsupport changedstyleclass="myBoldClass" event="ondblclick" resetfunction="callonCancelAction" showonedit="SaveAccid, cancelAccId">
+                      </apex:inlineeditsupport></apex:outputfield> 
+                 </apex:column>
+             </apex:pageBlockTable>
+         </apex:pageBlock>
+     </apex:form>
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:page controller="extnLogin">     
+        <script>
+           function checkUserLogin(){
+                if("{!$Profile.Name}"=="System Administrator"){
+                    alert('1----------->'+"{!$Profile.Name}");
+                }else{
+                    alert('2----------->'); 
+                }
+                
+                }
+           </script>
+      <apex:form >
+      
+        <apex:pageBlock title="User Login">
+            <apex:pageBlockSection title="User" columns="2">
+                <apex:inputText id="a1" value="{!userName}"/>
+                <apex:inputText value="{!userPass}"/>
+            </apex:pageBlockSection>
+                <apex:commandButton value="Login" onclick="checkUserLogin();"/>  
+         </apex:pageBlock>
+      </apex:form>
+</apex:page>

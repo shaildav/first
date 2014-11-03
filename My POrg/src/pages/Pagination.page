@@ -1,0 +1,57 @@
+<apex:page controller="pagingControllerForUser" tabStyle="Report">
+<c:Cursor_Busy1 />    
+         <apex:form > 
+            <apex:pageBlock >
+            <apex:pageMessages id="pgm"/>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Search" action="{!Search}" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Opportunity Name"/>
+                    <apex:inputText value="{!oppr.Name}" id="myInputText">                    </apex:inputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+
+        <apex:pageBlock rendered="{!IF(AllSearchUsers.size > 0 , true , false)}">
+
+           
+            
+
+                <apex:pageBlockTable value="{!AllSearchUsers}" var="UR" width="100%" id="mainForm">
+                    <apex:column headerValue="Name" value="{!UR.Name}"/>
+                    <apex:column headerValue="Account Name" value="{!UR.Account.Name}"/>
+                    <apex:column headerValue="Stage" value="{!UR.StageName}"/>
+                    <apex:column headerValue="Amount" value="{!UR.Amount}"/>
+                    <apex:column headerValue="Close Date" value="{!UR.CloseDate}"/>
+                </apex:pageBlockTable>
+
+            
+               <apex:outputPanel layout="block" styleClass="pSearchShowMore" id="otpNav2">
+                  Total Records Found: <apex:outputText rendered="{!IF(Con.resultSize==10000,true,false)}">10000 +</apex:outputText><apex:outputText rendered="{!IF(Con.resultSize < 10000,true,false)}">{!Con.resultSize}</apex:outputText>
+                  <apex:image url="/img/search_prevarrow_disabled.gif" title="Previous Page" styleClass="prevArrow" rendered="{!NOT(Con.HasPrevious)}"/>
+                  <apex:commandLink action="{!Previous}" title="Previous Page" value="Previous Page" rendered="{!Con.HasPrevious}"/>
+                  <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}">Previous Page</apex:outputPanel>         
+                  &nbsp;({!IF(Con.PageNumber == 1,1,((Con.PageNumber -1) * Con.PageSize)+1)}-{!IF(Con.resultSize < Con.PageSize,Con.resultSize,Con.PageNumber * Con.pageSize)})&nbsp;
+                  <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}">Next Page</apex:outputPanel>         
+                  <apex:commandLink title="Next Page" value="Next Page" rendered="{!Con.HasNext}" action="{!Next}"/>&nbsp;
+                  <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!Con.HasNext}"/>
+                  <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(Con.HasNext)}"/> 
+                  Records Per Page:
+                  <apex:selectList value="{!selectedPage}" size="1" multiselect="false" onselect="searchFunc()">
+                      <apex:selectoption itemLabel="5" itemValue="5"></apex:selectoption>
+                      <apex:selectoption itemLabel="10" itemValue="10"></apex:selectoption>
+                      <apex:selectoption itemLabel="25" itemValue="25"></apex:selectoption>
+                      <apex:selectoption itemLabel="100" itemValue="100"></apex:selectoption>
+                      <apex:actionSupport event="onchange" action="{!nextPage}" reRender="mainForm,otpNav2" oncomplete="hideDlg()" />         
+                  </apex:selectList>
+               </apex:outputPanel>
+
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

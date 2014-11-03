@@ -1,0 +1,9 @@
+<apex:page standardController="Object_2__c" extensions="CreateNewObj2Record">
+   
+   <apex:form >
+      <apex:pageMessages />
+       <apex:inputField value="{!Object_2__c.Date__c}"/>
+       <apex:inputField value="{!Object_2__c.Instructor_Number__c}"/>
+       <apex:commandButton value="Save" action="{!SaveRecord}"/>
+   </apex:form>
+</apex:page>

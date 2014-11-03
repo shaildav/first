@@ -1,0 +1,78 @@
+<apex:page controller="AdminUtility">
+    
+     <apex:form id="formId"><br/><br/>
+        <body>
+        <apex:outputPanel style="width:100%;" layout="block">
+        <apex:pageMessages />
+        <apex:pageblock >
+          <table>
+             <tr> <td>
+                    <fieldset><legend>Serach User</legend>
+                            <apex:pageBlockSection columns="8">
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputlabel value="Name:" />
+                                    <apex:inputText value="{!firstName}"/>
+                                </apex:pageBlockSectionItem>
+                             
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputlabel value="Email: " style="padding-left:50px;"/>
+                                    <apex:inputText value="{!email}" id="inputNameText">
+                                    </apex:inputText>
+                                </apex:pageBlockSectionItem>
+                                
+                            </apex:pageBlockSection>
+                              <center>
+                                <apex:actionStatus id="mySaveStatus1">
+                                    <apex:facet name="stop">
+                                        <apex:commandButton value="Search" action="{!searchUser}" status="mySaveStatus1" reRender="formId"/>
+                                    </apex:facet>
+                                    
+                                    <apex:facet name="start">
+                                        <apex:commandButton value="Processing..." status="mySaveStatus1" disabled="true" />
+                                    </apex:facet>
+                                </apex:actionStatus>
+                             </center>   
+                      </fieldset>
+                   </td>
+                   <td>
+                       <fieldset>
+                       <legend>Create User</legend>     
+                           <center> 
+                                 <apex:commandButton value="New User" onclick="window.top.location='/005/e?retURL=/005'; return false"/>
+                                 <apex:commandButton value="New Bulk User" onclick="window.top.location='/apex/FileUploader'; return false"/>
+                           </center>
+                      </fieldset>  
+                   </td>    
+                      
+         <br/><br/>
+         </tr>
+         </table>
+         </apex:pageblock> 
+        </apex:outputPanel> 
+         <apex:outputPanel style="width:100%;" layout="block" rendered="{!showUserDetail}">
+          <fieldset>
+           <legend>User Details:</legend>
+            <apex:pageblock >
+               <apex:pageBlockButtons >
+                   <apex:commandButton Value="Reset Password" action="{!ResetPassword}"/>
+                   <apex:commandButton Value="Inactive User" action="{!InactivateUser}"/>
+                   <apex:commandButton Value="Active User" action="{!ActivateUser}"/>
+               </apex:pageBlockButtons>
+               <apex:pageBlockTable value="{!lstuUser}" var="c" columns="6">
+                   <apex:column >
+                        <apex:inputCheckbox value="{!c.selected}"/>
+                    </apex:column>
+                     <apex:column >
+                         <apex:commandLink onclick="window.top.location='/{!c.us.Id}'; return false">{!c.us.Name}</apex:commandLink>
+                     </apex:column>
+                     <apex:column value="{!c.us.Email}"/>
+                     <apex:column value="{!c.us.Profile.Name}"/>
+                     <apex:column value="{!c.us.IsActive}"/>
+                     <apex:column value="{!c.us.UserName}"/>
+               </apex:pageBlockTable>
+            </apex:pageblock>          
+          </fieldset>  
+        </apex:outputPanel>
+        </body>
+     </apex:form>
+</apex:page>

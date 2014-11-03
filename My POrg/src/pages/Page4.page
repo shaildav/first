@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="AccountClassUtility">
+     <apex:form >          
+         Sum:<apex:outputText value="{!Sum}"/>
+     </apex:form> 
+</apex:page>

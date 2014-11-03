@@ -1,0 +1,16 @@
+<apex:page standardController="Contact" extensions="extSendSMS" >
+    <apex:form >
+        <apex:sectionHeader title="SMS" subtitle="Send SMS">
+        </apex:sectionHeader>
+        <apex:pageMessages id="pageMessages"/>
+        <apex:pageBlock id="smsblock" title="">
+            <apex:pageBlockSection id="smssection">
+                <apex:outputField value="{!contact.MobilePhone}"/>
+                <apex:inputField value="{!task.Description}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons id="smsbuttons">
+                <apex:commandButton value="Send SMS" action="{!sendSMS}"/> 
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
