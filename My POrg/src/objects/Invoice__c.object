@@ -81,7 +81,7 @@
     <fields>
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
-        <label>Status</label>
+        <label>New Status</label>
         <picklist>
             <picklistValues>
                 <fullName>Open</fullName>
