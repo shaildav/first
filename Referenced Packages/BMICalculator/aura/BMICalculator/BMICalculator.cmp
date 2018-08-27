@@ -1,0 +1,20 @@
+<aura:component description="Body mass index calculator"
+                implements="flexipage:availableForAllPageTypes,force:appHostable" access="global">
+    
+    <div> <b> Calculate Body Mass Index (BMI):</b> </div>
+    <div> Enter weight (in pounds):</div>
+    <div> <ui:inputText aura:id="weight" size="3"/> pounds</div>
+    <div> Enter height (in feet and inches): </div>
+     <div> <ui:inputText aura:id="heightFeet" size="2" placeholder="5"/> feet
+    	   <ui:inputText aura:id="heightInch" size="2" placeholder="4"/> inches
+    </div>
+	<div> <ui:button aura:id="calculate" class="primaryButton" label="Calculate"  press="{!c.calculateBMI}"/> </div>
+ 	<div> <ui:outputText class="error" aura:id="errorMsg" value=""/> </div>
+ 	<div> <ui:outputText class="result" aura:id="resultText" value=""/>
+   	 	  <b> <ui:outputText class="result" aura:id="resultValue" value=""/> </b>
+    	  <ui:outputText class="result" aura:id="resultCategoryTextStart" value=""/>
+     	  <b> <ui:outputText aura:id="resultCategoryValue" value=""/> </b>
+       	  <ui:outputText class="result" aura:id="resultCategoryTextEnd" value=""/>
+    </div>
+    <b> <ui:outputText aura:id="resultCaption" value="" /> </b>
+</aura:component>
