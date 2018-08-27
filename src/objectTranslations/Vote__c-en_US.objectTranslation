@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Vote</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Votes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contestent --></label>
+        <name>Contestent__c</name>
+        <relationshipLabel><!-- Votes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quality --></label>
+        <name>Quality__c</name>
+        <picklistValues>
+            <masterLabel>Commitment</masterLabel>
+            <translation><!-- Commitment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delegation</masterLabel>
+            <translation><!-- Delegation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Honesty</masterLabel>
+            <translation><!-- Honesty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leadership</masterLabel>
+            <translation><!-- Leadership --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>Score__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

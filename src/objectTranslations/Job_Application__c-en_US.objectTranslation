@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Job Applications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Candidate --></label>
+        <name>Candidate__c</name>
+        <relationshipLabel><!-- Job Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Legacy Job Application Number --></label>
+        <name>Legacy_Job_Application_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Position --></label>
+        <name>Position__c</name>
+        <relationshipLabel><!-- Job Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Stage --></label>
+        <name>Stage__c</name>
+        <picklistValues>
+            <masterLabel>Closed - Accepted</masterLabel>
+            <translation><!-- Closed - Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Declined</masterLabel>
+            <translation><!-- Closed - Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Position Closed</masterLabel>
+            <translation><!-- Closed - Position Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Rejected</masterLabel>
+            <translation><!-- Closed - Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interviews Completed</masterLabel>
+            <translation><!-- Interviews Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offer Extended</masterLabel>
+            <translation><!-- Offer Extended --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone Screen</masterLabel>
+            <translation><!-- Phone Screen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule Interviews</masterLabel>
+            <translation><!-- Schedule Interviews --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation><!-- Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
